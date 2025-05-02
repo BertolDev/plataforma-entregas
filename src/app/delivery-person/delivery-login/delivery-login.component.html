@@ -1,0 +1,18 @@
+<div class="auth-container">
+  <h2>{{ isLogin ? 'Login do Entregador' : 'Cadastro de Entregador' }}</h2>
+
+  <form *ngIf="isLogin" (ngSubmit)="onSubmitLogin()">
+    <input type="email" placeholder="Email" [(ngModel)]="loginEmail" name="loginEmail" required />
+    <input type="password" placeholder="Senha" [(ngModel)]="loginPassword" name="loginPassword" required />
+    <button type="submit">Entrar</button>
+    <button type="button" (click)="toggleMode()">Cadastrar-se</button>
+  </form>
+
+  <form *ngIf="!isLogin" (ngSubmit)="onSubmitRegister()">
+    <input type="text" placeholder="Nome" [(ngModel)]="registerName" name="registerName" required />
+    <input type="email" placeholder="Email" [(ngModel)]="registerEmail" name="registerEmail" required />
+    <input type="password" placeholder="Senha" [(ngModel)]="registerPassword" name="registerPassword" required />
+    <button type="submit">Cadastrar</button>
+    <button type="button" (click)="toggleMode()">Já tem conta? Faça login</button>
+  </form>
+</div>

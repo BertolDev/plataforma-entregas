@@ -1,0 +1,37 @@
+<h2>Cadastro de Lojista</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <label>
+    Nome:
+    <input formControlName="name" />
+  </label>
+  <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+    Nome é obrigatório.
+  </div>
+
+  <label>
+    E-mail:
+    <input formControlName="email" type="email" />
+  </label>
+  <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+    Email inválido.
+  </div>
+
+  <label>
+    Senha:
+    <input formControlName="password" type="password" />
+  </label>
+  <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+    A senha deve ter ao menos 6 caracteres.
+  </div>
+
+  <label>
+    Endereço:
+    <input formControlName="address" />
+  </label>
+  <div *ngIf="registerForm.get('address')?.invalid && registerForm.get('address')?.touched">
+    Endereço é obrigatório.
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">Cadastrar</button>
+</form>

@@ -1,0 +1,58 @@
+<h2>Cadastro de Entrega</h2>
+
+<form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
+  <label>
+    Nome do destinatário:
+    <input formControlName="recipientName" type="text" />
+  </label>
+  <div *ngIf="deliveryForm.get('recipientName')?.invalid && deliveryForm.get('recipientName')?.touched">
+    O nome do destinatário é obrigatório.
+  </div>
+
+  <label>
+    Endereço de entrega:
+    <input formControlName="recipientAddress" type="text" />
+  </label>
+  <div *ngIf="deliveryForm.get('recipientAddress')?.invalid && deliveryForm.get('recipientAddress')?.touched">
+    O endereço de entrega é obrigatório.
+  </div>
+
+  <label>
+    Data de entrega:
+    <input formControlName="deliveryDate" type="date" />
+  </label>
+  <div *ngIf="deliveryForm.get('deliveryDate')?.invalid && deliveryForm.get('deliveryDate')?.touched">
+    A data de entrega é obrigatória.
+  </div>
+
+  <label>
+    Status:
+    <select formControlName="status">
+      <option value="pending">Pendente</option>
+      <option value="in-progress">Em progresso</option>
+      <option value="completed">Concluída</option>
+    </select>
+  </label>
+
+  <button type="submit" [disabled]="deliveryForm.invalid">Cadastrar Entrega</button>
+</form>
+
+<!-- Lista de entregas cadastradas -->
+<h2>Entregas Cadastradas</h2>
+
+<div *ngIf="deliveries.length === 0">
+  Nenhuma entrega encontrada.
+</div>
+
+<ul *ngIf="deliveries.length > 0">
+  <li *ngFor="let delivery of deliveries">
+    <strong>{{ delivery.recipientName }}</strong> -
+    {{ delivery.recipientAddress }} -
+    {{ delivery.deliveryDate }} -
+    <em>Status: {{ delivery.status }}</em>
+
+    <!-- Botões para Editar e Excluir -->
+    <button (click)="editDelivery(delivery)">Modificar</button>
+    <button (click)="deleteDelivery(delivery.id)">Excluir</button>
+  </li>
+</ul>

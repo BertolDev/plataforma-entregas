@@ -1,0 +1,25 @@
+<h2>Login de Lojista</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="email">E-mail:</label>
+    <input id="email" formControlName="email" type="email" />
+    <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+      <small class="error-message">Insira um e-mail válido.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Senha:</label>
+    <input id="password" formControlName="password" type="password" />
+    <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+      <small class="error-message">Senha é obrigatória.</small>
+    </div>
+  </div>
+
+  <div *ngIf="loginError" class="error-message" style="margin-top: 10px;">
+    {{ loginError }}
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
+</form>

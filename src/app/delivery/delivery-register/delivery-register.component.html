@@ -1,1 +1,60 @@
-<p>delivery-register works!</p>
+<div class="register-container">
+  <h2>Cadastro de Entregador</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-section">
+      <label>Nome completo</label>
+      <input type="text" formControlName="fullName" />
+
+      <label>CPF</label>
+      <input type="text" formControlName="cpf" />
+
+      <label>Telefone</label>
+      <input type="tel" formControlName="phone" />
+
+      <label>E-mail</label>
+      <input type="email" formControlName="email" />
+
+      <label>Senha</label>
+      <input type="password" formControlName="password" />
+    </div>
+
+    <div class="form-section">
+      <h3>Informações do Veículo</h3>
+
+      <label>Tipo</label>
+      <select formControlName="vehicleType">
+        <option value="Moto">Moto</option>
+        <option value="Bike">Bike</option>
+        <option value="Carro">Carro</option>
+      </select>
+
+      <label>Modelo</label>
+      <input type="text" formControlName="vehicleModel" />
+
+      <label>Placa</label>
+      <input type="text" formControlName="vehiclePlate" />
+
+      <label>Ano</label>
+      <input type="text" formControlName="vehicleYear" />
+
+      <label>Cor</label>
+      <input type="text" formControlName="vehicleColor" />
+    </div>
+
+    <div class="form-section">
+      <h3>Localização e Disponibilidade</h3>
+
+      <label>Cidade</label>
+      <input type="text" formControlName="city" />
+
+      <label>Bairro Base</label>
+      <input type="text" formControlName="baseDistrict" />
+
+      <label>Disponibilidade</label>
+      <input type="text" formControlName="availability" placeholder="Ex: Dias úteis à tarde" />
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Cadastrar</button>
+  </form>
+</div>

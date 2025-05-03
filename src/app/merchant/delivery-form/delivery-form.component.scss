@@ -1,0 +1,99 @@
+/* Ajuste geral de fontes e layout */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Estilos dos campos de entrada */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Estilos para os botões */
+button[type="submit"],
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745; /* Cor verde */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button:hover {
+  background-color: #218838; /* Cor verde escuro no hover */
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Mensagens de erro */
+div {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+}
+
+/* Estilos para a lista de entregas */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f8f9fa;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+li button {
+  background-color: #dc3545;
+  margin-right: 10px;
+}
+
+li button:hover {
+  background-color: #c82333;
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 6px;
+}
+
+legend {
+  font-weight: bold;
+}
+
+input[type="date"] {
+  padding: 10px;
+}

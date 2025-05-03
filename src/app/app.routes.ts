@@ -13,6 +13,7 @@ import { DeliveryLoginComponent } from './delivery/delivery-login/delivery-login
 import { DeliveryDashboardComponent } from './delivery/delivery-dashboard/delivery-dashboard.component';
 import { deliveryAuthGuard } from './delivery/delivery-auth.guard';
 import { DeliveryMyOrdersComponent } from './delivery/delivery-my-orders/delivery-my-orders.component';
+import { DeliveryRegisterComponent } from './delivery/delivery-register/delivery-register.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ export const routes: Routes = [
   { path: 'customer/tracking', component: DeliveryTrackingComponent },
 
   { path: 'delivery/login', component: DeliveryLoginComponent },
+  { path: 'delivery/register', component: DeliveryRegisterComponent },
 
   // Rota protegida para o dashboard do entregador
   {

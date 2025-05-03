@@ -6,8 +6,8 @@
 
 <ul *ngIf="deliveries.length > 0">
   <li *ngFor="let delivery of deliveries">
-    <strong>{{ delivery.recipientName }}</strong> -
-    {{ delivery.recipientAddress }} -
+    <strong>{{ delivery.customerName }}</strong> -
+    {{ delivery.address }} -
     {{ delivery.deliveryDate | date }} -
     <em>Status: {{ delivery.status }}</em>
   </li>

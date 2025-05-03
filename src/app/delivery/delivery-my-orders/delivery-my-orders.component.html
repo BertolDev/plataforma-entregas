@@ -1,1 +1,20 @@
-<p>delivery-my-orders works!</p>
+<h2>Minhas Entregas</h2>
+
+<div *ngIf="deliveries.length === 0">
+  <p>Você ainda não possui entregas atribuídas.</p>
+</div>
+
+<ul *ngIf="deliveries.length > 0">
+  <li *ngFor="let entrega of deliveries">
+    <p><strong>Destinatário:</strong> {{ entrega.recipientName }}</p>
+    <p><strong>Endereço:</strong> {{ entrega.recipientAddress }}</p>
+    <p><strong>Data:</strong> {{ entrega.deliveryDate }}</p>
+    <p><strong>Status:</strong> {{ entrega.status }}</p>
+
+    <button *ngIf="entrega.status !== 'Entregue'" (click)="concluirEntrega(entrega)">
+      Marcar como Entregue
+    </button>
+
+    <hr>
+  </li>
+</ul>

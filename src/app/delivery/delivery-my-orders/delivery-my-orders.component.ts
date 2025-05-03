@@ -1,11 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Delivery } from '../../models/delivery.model';
+import { DeliveryService } from '../../services/delivery.service';
+import { DeliveryPersonService } from '../../services/delivery-person.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-delivery-my-orders',
-  imports: [],
+  imports: [CommonModule],
+  standalone: true,
   templateUrl: './delivery-my-orders.component.html',
-  styleUrl: './delivery-my-orders.component.scss'
+  styleUrls: ['./delivery-my-orders.component.scss']
 })
-export class DeliveryMyOrdersComponent {
+export class DeliveryMyOrdersComponent implements OnInit {
+  deliveries: Delivery[] = [];
 
+  constructor(
+    private deliveryService: DeliveryService,
+    private deliveryPersonService: DeliveryPersonService
+  ) {}
+
+  ngOnInit(): void {
+    const logged = this.deliveryPersonService.getLoggedPerson();
+    if (!logged) return;
+
+    this.deliveries = this.deliveryService
+      .getDeliveries()
+      .filter(d => d.assignedTo === logged.id);
+  }
+
+  concluirEntrega(entrega: Delivery) {
+    entrega.status = 'Entregue';
+    this.deliveryService.updateDelivery(entrega);
+  }
 }

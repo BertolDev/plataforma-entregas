@@ -1,1 +1,20 @@
-<p>delivery-dashboard works!</p>
+<div class="dashboard-container">
+  <h2>Bem-vindo, Entregador!</h2>
+
+  <!-- Se houver uma entrega ativa -->
+  <div *ngIf="activeDelivery">
+    <h3>Entrega Ativa</h3>
+    <p>De: {{ activeDelivery.recipientName }}</p>
+    <p>Endereço: {{ activeDelivery.recipientAddress }}</p>
+    <button (click)="completeDelivery()">Finalizar Entrega</button>
+  </div>
+
+  <!-- Se não houver entrega ativa, exibe as entregas disponíveis -->
+  <div *ngIf="!activeDelivery">
+    <h3>Entregas Disponíveis</h3>
+    <div *ngFor="let delivery of deliveries">
+      <p>{{ delivery.recipientName }} - {{ delivery.recipientAddress }}</p>
+      <button (click)="assignDelivery(delivery)">Aceitar Entrega</button>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,8 @@ export interface Delivery {
   recipientName: string;
   recipientAddress: string;
   status: string;
-  merchantId: number;
+  merchantId: string; // ID do lojista
   deliveryDate: string;
-  deliveryPersonId?: string; // se quiser vincular o entregador à entrega
+  assignedTo?: string; // ID do entregador atribuído (opcional)
+  delivered?: boolean;
 }

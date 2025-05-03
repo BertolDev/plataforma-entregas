@@ -7,13 +7,13 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DeliveryPerson } from '../../models/delivery-person.model';
 import { DeliveryPersonService } from '../../services/delivery-person.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-delivery-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './delivery-login.component.html',
   styleUrls: ['./delivery-login.component.scss'],
 })
@@ -37,7 +37,7 @@ export class DeliveryLoginComponent {
     const { email, password } = this.loginForm.value;
     const logged = this.deliveryPersonService.login(email, password);
     if (logged) {
-      this.router.navigate(['/delivery/list']);
+      this.router.navigate(['/delivery/dashboard']); // ✅ Rota corrigida aqui
     } else {
       this.errorMessage = 'Credenciais inválidas. Tente novamente.';
     }

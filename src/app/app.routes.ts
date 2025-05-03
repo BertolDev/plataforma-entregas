@@ -46,4 +46,13 @@ export const routes: Routes = [
     component: DeliveryMyOrdersComponent,
     canActivate: [deliveryAuthGuard] // Aqui também adicionamos o guard
   },
+
+  {
+    path: 'delivery/my-orders',
+    canActivate: [deliveryAuthGuard],
+    loadComponent: () =>
+      import('./delivery/delivery-my-orders/delivery-my-orders.component').then(
+        (m) => m.DeliveryMyOrdersComponent
+      ),
+  }
 ];

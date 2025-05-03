@@ -13,6 +13,7 @@ import { DeliveryLoginComponent } from './delivery/delivery-login/delivery-login
 import { DeliveryDashboardComponent } from './delivery/delivery-dashboard/delivery-dashboard.component';
 import { deliveryAuthGuard } from './delivery/delivery-auth.guard';
 import { DeliveryMyOrdersComponent } from './delivery/delivery-my-orders/delivery-my-orders.component';
+
 export const routes: Routes = [
   { path: '', component: HomeComponent },
 
@@ -25,13 +26,6 @@ export const routes: Routes = [
   { path: 'customer/tracking', component: DeliveryTrackingComponent },
 
   { path: 'delivery/login', component: DeliveryLoginComponent },
-  {
-    path: 'delivery/register',
-    loadComponent: () =>
-      import('./delivery/delivery-register/delivery-register.component').then(
-        (m) => m.DeliveryRegisterComponent
-      ),
-  },
 
   // Rota protegida para o dashboard do entregador
   {
@@ -46,13 +40,4 @@ export const routes: Routes = [
     component: DeliveryMyOrdersComponent,
     canActivate: [deliveryAuthGuard] // Aqui também adicionamos o guard
   },
-
-  {
-    path: 'delivery/my-orders',
-    canActivate: [deliveryAuthGuard],
-    loadComponent: () =>
-      import('./delivery/delivery-my-orders/delivery-my-orders.component').then(
-        (m) => m.DeliveryMyOrdersComponent
-      ),
-  }
 ];

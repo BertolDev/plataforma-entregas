@@ -29,7 +29,7 @@ export class DeliveryMyOrdersComponent implements OnInit {
   }
 
   concluirEntrega(entrega: Delivery) {
-    entrega.status = 'Entregue';
+    entrega.status = 'Finalizada';
     this.deliveryService.updateDelivery(entrega);
   }
 }

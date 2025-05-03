@@ -10,13 +10,9 @@ export class DeliveryService {
   private deliveryPersonStorageKey = 'registeredDeliveryPersons';
 
   // Métodos relacionados a entregas
-  addDelivery(delivery: Omit<Delivery, 'id'>): void {
+  addDelivery(delivery: Delivery): void {
     const deliveries = this.getDeliveries();
-    const newDelivery = {
-      ...delivery,
-      id: Date.now(),
-    };
-    deliveries.push(newDelivery);
+    deliveries.push(delivery);
     localStorage.setItem(this.deliveryStorageKey, JSON.stringify(deliveries));
   }
 
@@ -25,7 +21,7 @@ export class DeliveryService {
     return data ? JSON.parse(data) : [];
   }
 
-  deleteDelivery(id: number): void {
+  deleteDelivery(id: string): void {
     const deliveries = this.getDeliveries().filter(delivery => delivery.id !== id);
     localStorage.setItem(this.deliveryStorageKey, JSON.stringify(deliveries));
   }

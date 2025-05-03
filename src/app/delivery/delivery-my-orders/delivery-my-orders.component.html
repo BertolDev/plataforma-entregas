@@ -6,12 +6,18 @@
 
 <ul *ngIf="deliveries.length > 0">
   <li *ngFor="let entrega of deliveries">
-    <p><strong>Destinatário:</strong> {{ entrega.recipientName }}</p>
-    <p><strong>Endereço:</strong> {{ entrega.recipientAddress }}</p>
+    <p><strong>Destinatário:</strong> {{ entrega.customerName }}</p>
+    <p><strong>Endereço:</strong>
+      {{ entrega.address.street }}, {{ entrega.address.number }},
+      {{ entrega.address.district }} - {{ entrega.address.city }} / {{ entrega.address.state }}<br>
+      CEP: {{ entrega.address.postalCode }}
+    </p>
     <p><strong>Data:</strong> {{ entrega.deliveryDate }}</p>
     <p><strong>Status:</strong> {{ entrega.status }}</p>
 
-    <button *ngIf="entrega.status !== 'Entregue'" (click)="concluirEntrega(entrega)">
+    <button
+      *ngIf="entrega.status !== 'Finalizada'"
+      (click)="concluirEntrega(entrega)">
       Marcar como Entregue
     </button>
 

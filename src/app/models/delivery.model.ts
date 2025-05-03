@@ -1,10 +1,17 @@
 export interface Delivery {
-  id: number;
-  recipientName: string;
-  recipientAddress: string;
-  status: string;
-  merchantId: string; // ID do lojista
+  id: string;
+  customerName: string;
+  customerPhone: string;
   deliveryDate: string;
-  assignedTo?: string; // ID do entregador atribuído (opcional)
-  delivered?: boolean;
+  status: 'Pendente' | 'Em andamento' | 'Finalizada';
+  address: {
+    street: string;
+    number: string;
+    district: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    complement?: string;
+  };
+  assignedTo: string | null;
 }

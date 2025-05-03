@@ -1,21 +1,52 @@
 <h2>Cadastro de Entrega</h2>
 
-<form [formGroup]="deliveryForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="deliveryForm" (ngSubmit)="onSubmit(formDirective)" #formDirective="ngForm">
+
   <label>
     Nome do destinatário:
-    <input formControlName="recipientName" type="text" />
+    <input formControlName="customerName" type="text" />
   </label>
-  <div *ngIf="deliveryForm.get('recipientName')?.invalid && deliveryForm.get('recipientName')?.touched">
+  <div *ngIf="deliveryForm.get('customerName')?.invalid && deliveryForm.get('customerName')?.touched">
     O nome do destinatário é obrigatório.
   </div>
 
+  <fieldset formGroupName="address">
+    <legend>Endereço de Entrega</legend>
+
+    <label>
+      Rua:
+      <input formControlName="street" type="text" />
+    </label>
+    <label>
+      Número:
+      <input formControlName="number" type="text" />
+    </label>
+    <label>
+      Bairro:
+      <input formControlName="district" type="text" />
+    </label>
+    <label>
+      Cidade:
+      <input formControlName="city" type="text" />
+    </label>
+    <label>
+      Estado:
+      <input formControlName="state" type="text" />
+    </label>
+    <label>
+      CEP:
+      <input formControlName="postalCode" type="text" />
+    </label>
+    <label>
+      Complemento:
+      <input formControlName="complement" type="text" />
+    </label>
+  </fieldset>
+
   <label>
-    Endereço de entrega:
-    <input formControlName="recipientAddress" type="text" />
+    Telefone do destinatário:
+    <input formControlName="customerPhone" type="text" />
   </label>
-  <div *ngIf="deliveryForm.get('recipientAddress')?.invalid && deliveryForm.get('recipientAddress')?.touched">
-    O endereço de entrega é obrigatório.
-  </div>
 
   <label>
     Data de entrega:
@@ -28,9 +59,9 @@
   <label>
     Status:
     <select formControlName="status">
-      <option value="pending">Pendente</option>
-      <option value="in-progress">Em progresso</option>
-      <option value="completed">Concluída</option>
+      <option value="Pendente">Pendente</option>
+      <option value="Em andamento">Em andamento</option>
+      <option value="Finalizada">Finalizada</option>
     </select>
   </label>
 
@@ -46,12 +77,18 @@
 
 <ul *ngIf="deliveries.length > 0">
   <li *ngFor="let delivery of deliveries">
-    <strong>{{ delivery.recipientName }}</strong> -
-    {{ delivery.recipientAddress }} -
-    {{ delivery.deliveryDate }} -
+    <strong>{{ delivery.customerName }}</strong> -
+    Tel: {{ delivery.customerPhone }}<br />
+    {{ delivery.address.street }}, {{ delivery.address.number }} -
+    {{ delivery.address.district }} -
+    {{ delivery.address.city }} -
+    {{ delivery.address.state }} -
+    {{ delivery.address.postalCode }}<br />
+    Entrega em: {{ delivery.deliveryDate }}<br />
     <em>Status: {{ delivery.status }}</em>
 
-    <!-- Botões para Editar e Excluir -->
+    <br />
+
     <button (click)="editDelivery(delivery)">Modificar</button>
     <button (click)="deleteDelivery(delivery.id)">Excluir</button>
   </li>

@@ -1,11 +1,16 @@
-<div class="dashboard-container">
-  <h2>Bem-vindo, Entregador!</h2>
+<div class="welcome-message">
+  <h2>Bem-vindo, {{ loggedDeliveryPersonName || 'Entregador' }}!</h2>
 
   <!-- Se houver uma entrega ativa -->
   <div *ngIf="activeDelivery">
     <h3>Entrega Ativa</h3>
-    <p>De: {{ activeDelivery.recipientName }}</p>
-    <p>Endereço: {{ activeDelivery.recipientAddress }}</p>
+    <p><strong>De:</strong> {{ activeDelivery.customerName }}</p>
+    <p><strong>Endereço:</strong>
+      {{ activeDelivery.address.street }}, {{ activeDelivery.address.number }} -
+      {{ activeDelivery.address.district }} -
+      {{ activeDelivery.address.city }} - {{ activeDelivery.address.state }} |
+      CEP: {{ activeDelivery.address.postalCode }}
+    </p>
     <button (click)="completeDelivery()">Finalizar Entrega</button>
   </div>
 
@@ -13,8 +18,14 @@
   <div *ngIf="!activeDelivery">
     <h3>Entregas Disponíveis</h3>
     <div *ngFor="let delivery of deliveries">
-      <p>{{ delivery.recipientName }} - {{ delivery.recipientAddress }}</p>
+      <p>
+        <strong>{{ delivery.customerName }}</strong> -
+        {{ delivery.address.street }}, {{ delivery.address.number }} -
+        {{ delivery.address.district }}, {{ delivery.address.city }} -
+        {{ delivery.address.state }} | CEP: {{ delivery.address.postalCode }}
+      </p>
       <button (click)="assignDelivery(delivery)">Aceitar Entrega</button>
     </div>
   </div>
+  <button (click)="goToMyOrders()">Ver Histórico de Entregas</button>
 </div>

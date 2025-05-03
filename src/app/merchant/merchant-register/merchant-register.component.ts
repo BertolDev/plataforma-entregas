@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { MerchantService } from '../../shared/services/merchant.service';
+import { MerchantService } from '../../services/merchant.service';
 import { Merchant } from '../../models/merchant.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';

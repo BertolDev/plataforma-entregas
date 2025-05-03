@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DeliveryService } from '../../shared/services/delivery.service';
+import { DeliveryService } from '../../services/delivery.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Delivery } from '../../models/delivery.model';

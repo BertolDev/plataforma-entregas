@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MerchantService } from '../../shared/services/merchant.service';
+import { MerchantService } from '../../services/merchant.service';
 
 @Component({
   selector: 'app-merchant-login',

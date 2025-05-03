@@ -3,6 +3,7 @@ export interface Delivery {
   recipientName: string;
   recipientAddress: string;
   status: string;
-  merchantId: number; // <- essencial para saber de quem é a entrega
+  merchantId: number;
   deliveryDate: string;
+  deliveryPersonId?: string; // se quiser vincular o entregador à entrega
 }

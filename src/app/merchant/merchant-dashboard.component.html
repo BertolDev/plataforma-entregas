@@ -1,0 +1,14 @@
+<h2>Minhas Entregas</h2>
+
+<div *ngIf="deliveries.length === 0">
+  Nenhuma entrega cadastrada ainda.
+</div>
+
+<ul *ngIf="deliveries.length > 0">
+  <li *ngFor="let delivery of deliveries">
+    <strong>{{ delivery.recipientName }}</strong> -
+    {{ delivery.recipientAddress }} -
+    {{ delivery.deliveryDate | date }} -
+    <em>Status: {{ delivery.status }}</em>
+  </li>
+</ul>

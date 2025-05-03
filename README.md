@@ -31,7 +31,7 @@ Este projeto é um sistema web de entregas locais criado para atender pequenos l
 
 ## 📚 Sobre o autor
 
-Me chamo [Murilo Gabriel Bertoldo], sou um desenvolvedor front-end em transição de carreira. Após anos como entregador, estou me reinventando através da prática e da construção de soluções reais como esta. Atualmente, sou estagiário em uma empresa de ERP e também faço mentoria com o engenheiro de software sênior Wellington Felipe (Tech Lead no Itaú Unibanco e GDE).
+Me chamo Murilo Gabriel Bertoldo, sou um desenvolvedor front-end em transição de carreira. Após anos como entregador, estou me reinventando através da prática e da construção de soluções reais como esta. Atualmente, sou estagiário em uma empresa de ERP e também faço mentoria com o engenheiro de software sênior Wellington Felipe (Tech Lead no Itaú Unibanco e GDE).
 
 ## 📎 Como rodar o projeto
 

@@ -4,11 +4,12 @@ import { DeliveryService } from '../../services/delivery.service'; // Serviço p
 import { Delivery } from '../../models/delivery.model'; // Modelo da entrega
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router'; // Importando o Router para navegação
+import { DeliveryCardComponent } from '../../shared/delivery-card/delivery-card.component';
 
 @Component({
   selector: 'app-delivery-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CommonModule, DeliveryCardComponent],
   templateUrl: './delivery-dashboard.component.html',
   styleUrls: ['./delivery-dashboard.component.scss'],
 })

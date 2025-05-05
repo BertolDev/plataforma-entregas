@@ -4,28 +4,25 @@
   <!-- Se houver uma entrega ativa -->
   <div *ngIf="activeDelivery">
     <h3>Entrega Ativa</h3>
-    <p><strong>De:</strong> {{ activeDelivery.customerName }}</p>
-    <p><strong>Endereço:</strong>
-      {{ activeDelivery.address.street }}, {{ activeDelivery.address.number }} -
-      {{ activeDelivery.address.district }} -
-      {{ activeDelivery.address.city }} - {{ activeDelivery.address.state }} |
-      CEP: {{ activeDelivery.address.postalCode }}
-    </p>
-    <button (click)="completeDelivery()">Finalizar Entrega</button>
+    <app-delivery-card
+      [entrega]="activeDelivery"
+      [showActions]="false"
+      [showConcludeButton]="true"
+      (concluir)="completeDelivery()">
+    </app-delivery-card>
   </div>
 
   <!-- Se não houver entrega ativa, exibe as entregas disponíveis -->
   <div *ngIf="!activeDelivery">
     <h3>Entregas Disponíveis</h3>
-    <div *ngFor="let delivery of deliveries">
-      <p>
-        <strong>{{ delivery.customerName }}</strong> -
-        {{ delivery.address.street }}, {{ delivery.address.number }} -
-        {{ delivery.address.district }}, {{ delivery.address.city }} -
-        {{ delivery.address.state }} | CEP: {{ delivery.address.postalCode }}
-      </p>
-      <button (click)="assignDelivery(delivery)">Aceitar Entrega</button>
-    </div>
+    <app-delivery-card
+      *ngFor="let delivery of deliveries"
+      [entrega]="delivery"
+      [showActions]="true"
+      [showConcludeButton]="false"
+      (concluir)="assignDelivery(delivery)">
+    </app-delivery-card>
   </div>
+
   <button (click)="goToMyOrders()">Ver Histórico de Entregas</button>
 </div>

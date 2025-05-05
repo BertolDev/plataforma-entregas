@@ -1,0 +1,22 @@
+<div class="card">
+  <p><strong>Destinatário:</strong> {{ entrega.customerName }}</p>
+  <p><strong>Endereço:</strong>
+    {{ entrega.address.street }}, {{ entrega.address.number }},
+    {{ entrega.address.district }} - {{ entrega.address.city }} / {{ entrega.address.state }}<br>
+    CEP: {{ entrega.address.postalCode }}
+  </p>
+  <p><strong>Data:</strong> {{ entrega.deliveryDate }}</p>
+  <p><strong>Status:</strong> {{ entrega.status }}</p>
+
+  <div *ngIf="showActions" class="actions">
+    <button
+      *ngIf="showConcludeButton && entrega.status !== 'Finalizada'"
+      (click)="concluir.emit()">
+      Marcar como Entregue
+    </button>
+
+    <a *ngIf="showDetailsButton" [routerLink]="['/delivery/my-orders', entrega.id]">
+      <button>Ver Detalhes</button>
+    </a>
+  </div>
+</div>

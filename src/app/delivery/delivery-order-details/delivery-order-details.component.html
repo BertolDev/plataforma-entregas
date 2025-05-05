@@ -1,0 +1,15 @@
+<div *ngIf="orderData">
+  <h2>Detalhes da Entrega</h2>
+  <p><strong>Cliente:</strong> {{ orderData.customerName }}</p>
+  <p><strong>Endereço de Retirada:</strong> {{ orderData.pickupAddress }}</p>
+  <p><strong>Endereço de Entrega:</strong> {{ orderData.deliveryAddress }}</p>
+
+  <div class="map-container">
+    <!-- Aqui virá o mapa com Leaflet -->
+    <p>Mapa ainda não configurado</p>
+  </div>
+</div>
+
+<div *ngIf="!orderData">
+  <p>Entrega não encontrada.</p>
+</div>
